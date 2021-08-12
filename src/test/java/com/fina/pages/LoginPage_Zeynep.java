@@ -11,7 +11,24 @@ public class LoginPage_Zeynep {
         PageFactory.initElements(Driver.get(), this);
     }
 
+    @FindBy(id = "login")
+    public WebElement userName;
+
+
+
+    @FindBy(id = "password")
+    public WebElement password;
+
+    @FindBy(css = ".btn.btn-primary")
+    public WebElement submit;
+
+
+    public void login(String userNameStr, String passwordStr) {
+        userName.sendKeys(userNameStr);
+        password.sendKeys(passwordStr);
+        submit.click();
         // verification that we logged
+    }
     }
 
 
