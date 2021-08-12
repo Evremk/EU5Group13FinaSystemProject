@@ -1,9 +1,7 @@
 package com.fina.pages;
 
-
-public class LoginPage_Merve {
-
+public class merve {
     public static void main(String[] args) {
-        System.out.println("Hello");
+        System.out.println("google");
     }
 }
