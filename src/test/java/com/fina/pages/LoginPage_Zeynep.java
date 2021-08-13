@@ -14,14 +14,11 @@ public class LoginPage_Zeynep {
     @FindBy(id = "login")
     public WebElement userName;
 
-
-
     @FindBy(id = "password")
     public WebElement password;
 
     @FindBy(css = ".btn.btn-primary")
     public WebElement submit;
-
 
     public void login(String userNameStr, String passwordStr) {
         userName.sendKeys(userNameStr);
