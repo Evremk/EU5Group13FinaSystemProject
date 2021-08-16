@@ -12,13 +12,16 @@ public class LoginPage_Zeynep {
     }
 
     @FindBy(id = "login")
-    public WebElement userName;
+    private WebElement userName;
 
     @FindBy(id = "password")
-    public WebElement password;
+    private WebElement password;
 
     @FindBy(css = ".btn.btn-primary")
-    public WebElement submit;
+   private WebElement submit;
+
+    @FindBy(css = ".alert.alert-danger")
+    private WebElement wrongmessage;
 
     public void login(String userNameStr, String passwordStr) {
         userName.sendKeys(userNameStr);
@@ -26,6 +29,14 @@ public class LoginPage_Zeynep {
         submit.click();
         // verification that we logged
     }
+
+    public void enterUserName(String userName1) {
+        userName.sendKeys(userName1);
     }
+
+    public void enterPassword(String password1) {
+        password.sendKeys(password1);
+    }
+}
 
 
