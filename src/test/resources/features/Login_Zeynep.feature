@@ -22,7 +22,7 @@ Feature: user should be able to login
 
     Examples:
       | userType         | password |
-      | expenses manager |          |
+      | expenses manager |  12345        |
   @wip
   Scenario Outline: User can not login with invalid credentials
 
