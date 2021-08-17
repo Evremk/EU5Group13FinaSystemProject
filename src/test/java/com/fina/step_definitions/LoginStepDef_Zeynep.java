@@ -20,7 +20,6 @@ public class LoginStepDef_Zeynep {
         Driver.get().get(url);
     }
 
-
     @When("the user enters expenses manager information")
     public void the_user_enters_expenses_manager_information() {
         String username = ConfigurationReader.get("expenses_manager_username");
@@ -42,11 +41,11 @@ public class LoginStepDef_Zeynep {
 
     @When("the user enters sales manager information")
     public void the_user_enters_sales_manager_information() {
-       String username = ConfigurationReader.get("sales_manager_username");
-       String password = ConfigurationReader.get("sales_manager_password");
+        String username = ConfigurationReader.get("sales_manager_username");
+        String password = ConfigurationReader.get("sales_manager_password");
 
 
-       loginPage.login(username,password);
+        loginPage.login(username,password);
     }
 
 
@@ -70,4 +69,13 @@ public class LoginStepDef_Zeynep {
         loginPage.enterPassword(password);
 
     }
+
+    @Then("the user sees wrong message")
+    public void theUserSeesWrongMessage() {
+
+        Assert.assertTrue(loginPage.wrongMessageIsVisible());
+
+
+    }
 }
+

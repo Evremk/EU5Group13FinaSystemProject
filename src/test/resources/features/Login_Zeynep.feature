@@ -8,6 +8,7 @@ Feature: user should be able to login
     When the user enters "<userType>"
     And the user enters "<password>"
 
+
     Examples:
       | userType         | password        |
       | expenses manager | expensesmanager |
@@ -19,11 +20,12 @@ Feature: user should be able to login
 
     When the user enters "<wrongUser name>"
     And the user enters password "<password>"
+    Then the user sees wrong message
 
     Examples:
       | wrongUser name   | password        |
       | wrongemail       | posmanager      |
-      | null             | expensesmanager |
-      | posmanager       | null            |
+      | error            | expensesmanager |
+      | posmanager       | nosuch          |
       | expenses manager | salesmanager    |
 
