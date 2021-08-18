@@ -1,6 +1,8 @@
 package com.fina.pages;
 
+import com.fina.utilities.BrowserUtils;
 import com.fina.utilities.Driver;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -17,7 +19,7 @@ public class LoginPage_Zeynep {
     @FindBy(id = "password")
     private WebElement password;
 
-    @FindBy(css = ".btn.btn-primary")
+    @FindBy(xpath = "//button[.='Log in']")
    private WebElement submit;
 
     @FindBy(css = ".alert.alert-danger")
@@ -27,6 +29,7 @@ public class LoginPage_Zeynep {
         userName.sendKeys(userNameStr);
         password.sendKeys(passwordStr);
         submit.click();
+
         // verification that we logged
     }
 
@@ -36,6 +39,12 @@ public class LoginPage_Zeynep {
 
     public void enterPassword(String password1) {
         password.sendKeys(password1);
+    }
+
+    public boolean wrongMessageIsVisible() {
+        submit.click();
+        BrowserUtils.waitFor(2);
+       return wrongmessage.isDisplayed();
     }
 }
 
