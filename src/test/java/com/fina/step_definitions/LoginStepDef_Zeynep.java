@@ -10,6 +10,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
+import java.util.Map;
+
 public class LoginStepDef_Zeynep {
 
     LoginPage_Zeynep loginPage =new LoginPage_Zeynep();
@@ -77,5 +79,23 @@ public class LoginStepDef_Zeynep {
 
 
     }
+
+    @When("the user logs in using following credentials")
+    public void the_user_logs_in_using_following_credentials(Map<String,String> user) {
+        System.out.println("User = " + user);
+        new LoginPage_Zeynep().login(user.get("username"),user.get("password"));
+    }
+
+
+    @When("the user enters invalid {string} or {string}")
+    public void the_user_enters_invalid_or(String userName, String passWord) {
+       loginPage.login(userName, passWord);
+    }
+
+    @When("the user enters valid {string} and {string}")
+    public void the_user_enters_valid_and(String usernam, String passwor) {
+        loginPage.login(usernam, passwor);
+    }
+
 }
 

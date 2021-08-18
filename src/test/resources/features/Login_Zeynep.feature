@@ -15,17 +15,28 @@ Feature: user should be able to login
       | store manager    | storemanager    |
       | sales manager    | salesmanager    |
 
-  @wip
-  Scenario Outline: User can not login with invalid credentials
 
-    When the user enters "<wrongUser name>"
-    And the user enters password "<password>"
-    Then the user sees wrong message
 
+    Scenario: user able to login with this credentials
+      When the user logs in using following credentials
+         |username |posmanager90@info.com |
+         |password |posmanager            |
+       Then  the user should be able to login
+
+   @wip
+  Scenario Outline: user able to login
+    When the user enters valid "<userName>" and "<passWord>"
+    Then the user is on the login page
     Examples:
-      | wrongUser name   | password        |
-      | wrongemail       | posmanager      |
-      | error            | expensesmanager |
-      | posmanager       | nosuch          |
-      | expenses manager | salesmanager    |
-
+      | userName                   | passWord        |
+      | expensesmanager9@info.com  | expensesmanager |
+      | expensesmanager14@info.com | expensesmanager |
+      | expensesmanager66@info.com | expensesmanager |
+      | salesmanager10@info.com    | salesmanager    |
+      | salesmanager77@info.com    | salesmanager    |
+      | salesmanager99@info.com    | salesmanager    |
+      | salesmanager50@info.com    | salesmanager    |
+      | posmanager22@info.com      | posmanager      |
+      | posmanager33@info.com      | posmanager      |
+      | posmanager44@info.com      | posmanager      |
+      | posmanager11@info.com      | posmanager      |
