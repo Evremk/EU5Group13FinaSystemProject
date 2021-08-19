@@ -43,7 +43,7 @@ public class LoginPage_Zeynep {
 
     public boolean wrongMessageIsVisible() {
         submit.click();
-        BrowserUtils.waitFor(2);
+        BrowserUtils.waitFor(1);
        return wrongmessage.isDisplayed();
     }
 }

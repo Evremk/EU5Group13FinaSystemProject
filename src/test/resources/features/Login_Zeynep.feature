@@ -23,7 +23,6 @@ Feature: user should be able to login
          |password |posmanager            |
        Then  the user should be able to login
 
-   @wip
   Scenario Outline: user able to login
     When the user enters valid "<userName>" and "<passWord>"
     Then the user is on the login page
