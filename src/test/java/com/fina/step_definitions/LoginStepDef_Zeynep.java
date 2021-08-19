@@ -1,5 +1,6 @@
 package com.fina.step_definitions;
 
+import com.fina.pages.DashboardPage_Zeynep;
 import com.fina.pages.LoginPage_Zeynep;
 import com.fina.utilities.BrowserUtils;
 import com.fina.utilities.ConfigurationReader;
@@ -9,12 +10,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
+import java.util.List;
 import java.util.Map;
 
 public class LoginStepDef_Zeynep {
 
     LoginPage_Zeynep loginPage =new LoginPage_Zeynep();
+    DashboardPage_Zeynep db = new DashboardPage_Zeynep();
 
     @Given("the user is on the login page")
     public void the_user_is_on_the_login_page() {
@@ -33,7 +38,7 @@ public class LoginStepDef_Zeynep {
 
     @Then("the user should be able to login")
     public void the_user_should_be_able_to_login() {
-        BrowserUtils.waitFor(3);
+        BrowserUtils.waitFor(2);
         System.out.println(Driver.get().getTitle());
         String actualTitle = Driver.get().getTitle();
         System.out.println("actualTitle = " + actualTitle);
@@ -97,5 +102,39 @@ public class LoginStepDef_Zeynep {
         loginPage.login(usernam, passwor);
     }
 
+    @Given("the user is logged in")
+    public void theUserIsLoggedIn() {
+        the_user_is_on_the_login_page();
+        the_user_enters_sales_manager_information();
+    }
+
+    @When("the user click avatar dropdown button")
+    public void theUserClickAvatarDropdownButton() {
+
+        db.clickAvatarButton();
+    }
+
+    @Then("the user click logout button")
+    public void theUserClickLogoutButton() {
+        db.selectLogoutOption();
+    }
+
+    @And("the title contains {string}")
+    public void theTitleContains(String expectedTitle) {
+        System.out.println("expectedTitle = " + expectedTitle);
+        String actualTitle=Driver.get().getTitle();
+        System.out.println("actualTitle = " + actualTitle);
+        Assert.assertTrue(Driver.get().getTitle().contains(expectedTitle));
+    }
+
+    @Then("the user able to see dropdown menu")
+    public void theUserAbleToSeeDropdownMenu() {
+        List<WebElement> options = Driver.get().findElements(By.className("dropdown-menu"));
+        System.out.println(options.size());
+        System.out.println(options.get(1).getText());
+        Assert.assertTrue(options.get(1).getText().contains("Log out"));
+
+
+    }
 }
 
