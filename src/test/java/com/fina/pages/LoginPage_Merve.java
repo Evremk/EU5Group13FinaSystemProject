@@ -24,11 +24,11 @@ public class LoginPage_Merve {
     private WebElement wrongmessage;
 
 
-    public void login(String userNameStr, String passwordStr) {
-        userName.sendKeys(userNameStr);
-        password.sendKeys(passwordStr);
+    public void login(String Username, String Password) {
+        userName.sendKeys(Username);
+        password.sendKeys(Password);
         submit.click();
-        // verification that we logged
+
     }
 
     public void enterUserName(String userName1) {
