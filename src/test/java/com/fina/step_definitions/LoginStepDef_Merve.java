@@ -26,6 +26,7 @@ public class LoginStepDef_Merve {
     public void the_user_enters_expenses_manager_information() {
         String username = ConfigurationReader.get("expenses_manager_username");
         String password = ConfigurationReader.get("expenses_manager_password");
+        String password2 = ConfigurationReader.get("expenses_manager_password");
 
 
         loginPage.login(username,password);
@@ -69,6 +70,7 @@ public class LoginStepDef_Merve {
     @And("the user enters password {string}")
     public void theUserEntersPassword(String password) {
         loginPage.enterPassword(password);
+
 
     }
 }

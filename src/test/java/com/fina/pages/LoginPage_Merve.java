@@ -23,6 +23,7 @@ public class LoginPage_Merve {
     @FindBy(css = ".alert.alert-danger")
     private WebElement wrongmessage;
 
+
     public void login(String userNameStr, String passwordStr) {
         userName.sendKeys(userNameStr);
         password.sendKeys(passwordStr);
@@ -39,4 +40,4 @@ public class LoginPage_Merve {
     }
 }
 
-}
+
