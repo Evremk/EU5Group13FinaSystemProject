@@ -39,6 +39,22 @@ public class LoginStepDef_Selma{
         Assert.assertEquals(expected, actual);
 
     }
+    @When("the user enters invalid {string} and {string} credentials")
+    public void the_user_enters_invalid_and_credentials(String username, String password) {
+        loginPage.login(username,password);
+
+    }
+
+    @Then("the user should not be able to login and should be see error message.")
+    public void the_user_should_not_be_able_to_login_and_should_be_see_error_message() {
+
+        WebDriverWait wait = new WebDriverWait(Driver.get(),10);
+        wait.until(ExpectedConditions.visibilityOf(loginPage.errorMessage));
+        
+        String expected = "Wrong login/password";
+        String actual = loginPage.errorMessage.getText();
+        Assert.assertEquals(expected,actual);
+    }
 
 
 }
