@@ -18,11 +18,13 @@ public class LoginPage_Selma {
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement logIn;
 
+    @FindBy(xpath = "//p[@class='alert alert-danger']")
+    public WebElement errorMessage;
+
     public void login(String userNameStr,String passwordStr){
         username.sendKeys(userNameStr);
         password.sendKeys(passwordStr);
         logIn.click();
     }
-
 
 }
