@@ -15,14 +15,7 @@ public class LoginStepDef_Merve extends LoginPage_Merve {
 
     LoginPage_Merve loginPage =new LoginPage_Merve();
 
-    @Given("User is on the login page")
-    public void User_is_on_the_login_page() {
-        String url = ConfigurationReader.get("url");
-        Driver.get().get(url);
-    }
-
-
-    @Then("the user should be able to login")
+    @Then("the user should be able to login Merve")
     public void the_user_should_be_able_to_login() {
         BrowserUtils.waitFor(3);
         System.out.println(Driver.get().getTitle());
@@ -32,15 +25,31 @@ public class LoginStepDef_Merve extends LoginPage_Merve {
 
     }
 
-    @And("the user enters password {string}")
-    public void theUserEntersPassword(String password) {
+    @And("the user enters password {string} Merve")
+    public void theUserEntersPasswordMerve(String password) {
         loginPage.enterPassword(password);
 
 
     }
 
-    @When("the {usertype} enters valid credentials")
-    public void theEntersValidCredentials(String usertype) {
+    @Then("the user is not able to login Merve")
+    public void theUserIsNotAbleToLogin() {
+
+        BrowserUtils.waitFor(2);
+        String expectedUrl = "https://qa.finworkserp.com/web/login";
+        String actualUrl = Driver.get().getCurrentUrl();
+        Assert.assertEquals("verify Url", expectedUrl,actualUrl);
+        //Assert.assertTrue(loginPage.errorMessageIsVisible());
+
+    }
+
+    @When("the user clicks login Merve")
+    public void theUserClicksLogin() {
+        loginPage.clickEnter();
+    }
+
+    @When("the {string} enters valid credentials Merve")
+    public void theEntersValidCredentialsMerve(String usertype) {
 
         usertype= usertype.toLowerCase();
         String username=null;
@@ -67,21 +76,35 @@ public class LoginStepDef_Merve extends LoginPage_Merve {
 
     }
 
-    @When("the user enters invalid {string}")
-    public void theUserEntersInvalidEmail(String email) {
-    }
 
-    @And("the user enters valid {string}")
-    public void theUserEntersValidPassword(String password) {
-    }
-
-    @Then("the user is not able to login")
-    public void theUserIsNotAbleToLogin() {
+    @When("the user enters valid email {string} Merve")
+    public void theUserEntersValidEmailMerve(String email) {
+        loginPage.enterEmail(email);
 
     }
 
-    @When("the user clicks enter")
-    public void theUserClicksEnter() {
+    @And("the user enters invalid password {string} Merve")
+    public void theUserEntersInvalidPasswordMerve(String invalidPassword) {
+        loginPage.enterPassword(invalidPassword);
+
+
+    }
+
+
+    @When("the user enters invalid email {string} Merve")
+    public void theUserEntersInvalidEmailMerve(String invalidEmail) {
+        loginPage.enterEmail(invalidEmail);
+    }
+
+    @And("the user enters valid password {string} Merve")
+    public void theUserEntersValidPasswordMerve(String password) {
+        loginPage.enterPassword(password);
+    }
+
+    @Given("the user is on the login page Merve")
+    public void theUserIsOnTheLoginPageMerve() {
+        String url = ConfigurationReader.get("url");
+        Driver.get().get(url);
     }
 }
 

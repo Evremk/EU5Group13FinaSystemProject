@@ -17,17 +17,10 @@ public class Hooks {
         if (scenario.isFailed()){
             final byte[] screenshot =((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot,"image/png","screenshot");
+
         }
-       // Driver.closeDriver();
+        System.out.println("This is coming from AFTER");
+        Driver.closeDriver();
 
-    }
-
-    @Before("@db")
-    public void setUpdb(){
-        System.out.println("\tconnecting to database...");
-    }
-    @After("@db")
-    public void tearDowndb(){
-        System.out.println("\tdisconnecting to database...");
     }
 }

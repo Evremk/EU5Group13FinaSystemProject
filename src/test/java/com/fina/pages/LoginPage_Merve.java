@@ -12,7 +12,7 @@ public class LoginPage_Merve {
     }
 
     @FindBy(id = "login")
-    private WebElement userName;
+    private WebElement email;
 
     @FindBy(id = "password")
     private WebElement password;
@@ -21,22 +21,36 @@ public class LoginPage_Merve {
     private WebElement submit;
 
     @FindBy(css = ".alert.alert-danger")
-    private WebElement wrongmessage;
+    private WebElement errorMessage;
 
 
-    public void login(String Username, String Password) {
-        userName.sendKeys(Username);
+    public void login(String Email, String Password) {
+        email.sendKeys(Email);
         password.sendKeys(Password);
         submit.click();
 
     }
 
-    public void enterUserName(String userName1) {
-        userName.sendKeys(userName1);
+    public void enterEmail(String emailAddress) {
+        email.sendKeys(emailAddress);
     }
 
     public void enterPassword(String password1) {
         password.sendKeys(password1);
+    }
+
+    public void clickEnter(){
+        submit.click();
+
+    }
+
+    public boolean errorMessageIsVisible(){
+        boolean condition=false;
+        if(errorMessageIsVisible()){
+            condition=true;
+
+        }
+        return condition;
     }
 }
 
