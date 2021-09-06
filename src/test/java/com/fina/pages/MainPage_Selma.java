@@ -10,4 +10,12 @@ public class MainPage_Selma {
 
     @FindBy(xpath= "//*[@class='active' and text()='#Inbox']")
     public WebElement InboxTitle;
+
+    @FindBy(xpath= "//span[@class='oe_topbar_name']")
+    public WebElement AvatarButton;
+
+    @FindBy(xpath= "//a[@data-menu='logout']")
+    public WebElement LogOut;
+
+
 }
