@@ -55,6 +55,57 @@ public class LoginStepDef_Selma{
         String actual = loginPage.errorMessage.getText();
         Assert.assertEquals(expected,actual);
     }
+    @Given("The user logged in as {string}")
+    public void the_user_logged_in_as(String userType) {
+
+        Driver.get().get(ConfigurationReader.get("url"));
+
+        String username = null;
+        String password = null;
+
+        if (userType.equals("expenses manager")) {
+            username = ConfigurationReader.get("expenses_manager_username");
+            password = ConfigurationReader.get("expenses_manager_password");
+        } else if (userType.equals("sales manager")) {
+            username = ConfigurationReader.get("sales_manager_username");
+            password = ConfigurationReader.get("sales_manager_password");
+        } else if (userType.equals("store manager")) {
+            username = ConfigurationReader.get("store_manager_username");
+            password = ConfigurationReader.get("store_manager_password");
+        }
+
+        loginPage.login(username, password);
+
+    }
+
+    @When("The user clicks the avatar dropdown button")
+    public void the_user_clicks_the_avatar_dropdown_button() {
+
+        WebDriverWait wait = new WebDriverWait(Driver.get(),10);
+        wait.until(ExpectedConditions.visibilityOf(mainPage.AvatarButton));
+        mainPage.AvatarButton.click();
+    }
+
+    @When("The user clicks logout button")
+    public void the_user_clicks_logout_button() {
+        WebDriverWait wait = new WebDriverWait(Driver.get(),10);
+        wait.until(ExpectedConditions.visibilityOf(mainPage.LogOut));
+        mainPage.LogOut.click();
+
+    }
+
+    @Then("The user should see signIn link on the login page")
+    public void the_user_should_see_signIn_link_on_the_login_page() {
+
+        WebDriverWait wait = new WebDriverWait(Driver.get(),10);
+        wait.until(ExpectedConditions.visibilityOf(loginPage.signInLink));
+
+        String expected = "Sign in";
+        String actual = loginPage.signInLink.getText();
+        Assert.assertEquals(expected,actual);
+    }
+
+
 
 
 }

@@ -21,6 +21,9 @@ public class LoginPage_Selma {
     @FindBy(xpath = "//p[@class='alert alert-danger']")
     public WebElement errorMessage;
 
+    @FindBy(xpath = "//a[@href='/web/login']")
+    public WebElement signInLink;
+
     public void login(String userNameStr,String passwordStr){
         username.sendKeys(userNameStr);
         password.sendKeys(passwordStr);

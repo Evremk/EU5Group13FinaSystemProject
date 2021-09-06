@@ -15,7 +15,6 @@ Feature: Users should be able to login
     | salesmanager15@info.com    | salesmanager               |
     | posmanager85@info.com      | posmanagerexpenses_manager |
 
-  @wips
   Scenario Outline: Login with invalid credentials
     When the user enters invalid "<UserName>" and "<PassWord>" credentials
     Then the user should not be able to login and should be see error message.
@@ -23,5 +22,5 @@ Feature: Users should be able to login
     Examples:
       | UserName                   | PassWord                   |
       | salesmanager15@info        | salesmanager               |
-      | posmanager80@info          | expensesmanager543535353   |
+      | posmanager85@info.com      | expensesmanager543535353   |
       | posmanager80@info          | expensesmanager543535353   |
