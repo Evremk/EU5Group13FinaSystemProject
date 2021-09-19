@@ -24,38 +24,32 @@ public class LoginStepDef_aysegul extends LoginPage_aysegul {
     }
 
 
-    @When(" The <usertype> enters valid <username> and <password>")
-    public void usertypeEntersValidUsernameAndPassword_aysegul() {
+    @When("{usertype} enters valid {username} and valid {password}")
+    public void entersValidAndValid(String arg0, String arg1, String arg2) {
 
+
+        Driver.get().get(ConfigurationReader.get("url"));
         String usertype= null;
         String username = null;
         String password = null;
 
-        Driver.get().get(ConfigurationReader.get("url"));
 
         if (usertype.equals("expenses manager")) {
             username = ConfigurationReader.get("expenses_manager_username");
             password = ConfigurationReader.get("expenses_manager_password");
+            loginPage.login(username, password);
 
         } else if (usertype.equals("sales manager")) {
             username = ConfigurationReader.get("sales_manager_username");
             password = ConfigurationReader.get("sales_manager_password");
-
+            loginPage.login(username, password);
         } else  {
             username = ConfigurationReader.get("store_manager_username");
             password = ConfigurationReader.get("store_manager_password");
-
+            loginPage.login(username, password);
         }
 
-        loginPage.login(username, password);
-
-
-
-
-
-        }
-
-
+    }
 }
 
 

@@ -1,12 +1,13 @@
 Feature: User should be able to login
 
   Background:
-    @wip
+
     Given The user is on the login Page_aysegul
 
 
   Scenario Outline: Login as a different user under different valid credentials
-    When <usertype> enters valid <username> and valid <password>
+
+    When   "<usertype>" enters valid "<username>" and valid "<password>"
     Then the user should be able to login
     Examples:
       | usertype               | username                | password            |
@@ -22,12 +23,12 @@ Feature: User should be able to login
       | Expenses Manager       | expensesmanager10@info.com | expensesmanager  |
       | Expenses Manager       | expensesmanager10@info.com | expensesmanager  |
       | Expenses Manager       |  expensesmanager10@info.com | expensesmanager |
-      | Manufacturing Manager  |   manuf user10@info.com     |  manufuser          |
-      | Manufacturing Manager  | manuf user110@info.com      | manufuser           |
-      | Manufacturing Manager  |manuf user35@info.com         | manufuser           |
+      | Manufacturing Manager  |   manuf user10@info.com     |  manufuser      |
+      | Manufacturing Manager  | manuf user110@info.com      | manufuser       |
+      | Manufacturing Manager  |manuf user35@info.com         | manufuser      |
 
   Scenario Outline:Login as a different user under different invalid credentials
-    When <usertype> enters valid <username> and valid <password>
+    When "<usertype>"enters invalid "<username>" or "<password>"
     Then the user is on the login page
     Examples:
       | usertype               | username               | password               |
